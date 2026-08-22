@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  exit-0:
+    name: exit-0-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: exit 0
