@@ -6,7 +6,7 @@ on:
 
 jobs:
   exit-0:
-    name: exit-0-test
+    name: exit-1-test
     runs-on: ubuntu-latest
     steps:
       - name: test
