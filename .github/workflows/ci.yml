@@ -3,8 +3,8 @@ name: CI
 on:
   pull_request:
     branches: [main]
-  paths:
-    - 'nonexistent/**'
+    paths:
+      - 'nonexistent/**'
 
 jobs:
   exit-0:
