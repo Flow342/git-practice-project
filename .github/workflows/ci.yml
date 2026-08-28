@@ -5,10 +5,35 @@ on:
     branches: [main]
 
 jobs:
-  exit-0:
-    name: exit-0-test
+  lint:
+    name: lint-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: test
+      - name: lint-test-code
+        run: exit 0
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:       
+      - uses: actions/checkout@v7
+      - name: build-code
         run: python3 scripts/funcCall.py
+  gate:
+    name: gate
+    runs-on: ubuntu-latest
+    needs: [lint, build]
+    if: always()
+    steps:
+      - name: check-result
+        env: 
+          Build_ENV: ${{ needs.build.result }}
+          Lint_ENV: ${{ needs.lint.result }}
+        run: |
+          echo "alpha=$Build_ENV beta=$Lint_ENV"
+          for r in "$Build_ENV" "$Lint_ENV"; do
+            if [ "$r" != "success" ]; then
+              echo "A dependency did not succeed"
+              exit 1
+            fi
+          done
+          echo "All dependencies succeeded"
