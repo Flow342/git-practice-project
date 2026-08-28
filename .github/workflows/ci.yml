@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lint-test-code
-        run: exit 0
+        run: exit 1
   build:
     name: build
     runs-on: ubuntu-latest
