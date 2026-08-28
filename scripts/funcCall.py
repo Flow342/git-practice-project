@@ -1,3 +1,3 @@
-from func import func
+from func import funcNEW
 
-func()
+funcNEW()

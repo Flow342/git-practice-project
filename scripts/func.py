@@ -1,3 +1,3 @@
-def func():
+def funcNEW():
     print("hello")
 
