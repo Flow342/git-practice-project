@@ -1,4 +1,4 @@
-from func import func
+from func import funcNEW
 
-func()
-func()
+funcNEW()
+funcNew()
